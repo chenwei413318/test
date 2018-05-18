@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//     var arr1 = [
+//     {x:513.4261838440111,y:1},
+//     {x:20.3404255319149,y:1},
+//     {x:13.4261838440111,y:1},
+//     {x:20.5167237931058,y:2},
+//     {x:520.5167237931058,y:2},
+//     {x:241.57929926401988,y:3},
+//     {x:270.3404255319149,y:3},
+//     {x:241.5792992640199,y:3}
+// ]
+// function addSame(data){
+//     let noSame=[]
+//     data.forEach(itemX=>{
+//         data.forEach(itemY=>{
+//             if (itemX.y==itemY.y) {
+//                 itemX = itemY
+//                 itemX.y+=itemY.y
+//                 data.splice(itemY,1)
+//                 itemY = itemY - 1
+//             }
+//         })
+//     });
+//     console.log(data)
+//     return data
+// }
+// addSame(arr1)
+// var arr1 = [{x:513.4261838440111,y:174},
+//     {x:270.3404255319149,y:174},
+//     {x:513.4261838440111,y:174},
+//     {x:520.5167237931058,y:369.80798782499784},
+//     {x:520.5167237931058,y:369.80798782499784},
+//     {x:241.57929926401988,y:381.9650668601638},
+//     {x:270.3404255319149,y:174},
+//     {x:241.5792992640199,y:381.9650668601638},
+//     {x:241.5792992640199,y:381.9650668601638}
+// ]
+// var val = 0
+// for (var i = 0; i < arr1.length-1; i++) {
+//     for (var j = i+1; j < arr1.length; j++) {
+//             if (arr1[i].y == arr1[j].y) {
+//                 val+= arr1[j].y
+//                 console.log(val)
+//                 arr1.splice(j, 1)
+//                 j=j-1
+//             }
+//     }
+//     arr1[i].y+=val
+// }
+// console.log(arr1)
+var arr = [
+  {id:'1',code: "陈伟", "poll":'7','chen':1},
+  {id:'1',code: "哈哈", "poll": '2','chen':1},
+  {id:'1',code: "嗯", "poll": '18','chen':3},
+  {id:'2',code: "陈伟", "poll": '5','chen':3},
+  {id:'1',code: "嗯", "poll": '12','chen':2},
+  {id:'1',code: "陈伟", "poll": '1','chen':2}
+];
+
+function pollAdd(arr) {
+  let res = [];
+  let tmp = {};
+
+  arr.forEach((v) => {
+  	v.poll = Number(v.poll)
+  	var str = "id:" + v.id + "code:" + v.code   
+    if (!tmp.hasOwnProperty(str)) {
+      tmp[str] = res.length;
+      return res.push(Object.assign({}, v));
+    }
+    res[tmp[str]].poll += v.poll;
+    res[tmp[str]].chen += v.chen;
+  });
+
+  console.log(res)
+  return res;
+}
+pollAdd(arr)
+</script>
